@@ -1,10 +1,13 @@
-import { employeeList } from '../initialState.js';
+import { employees } from '../initialState.js';
 
-const employeesReducer = (state=employeeList, action) => {
+const employeesReducer = (state=employees, action) => {
     let newState;
     switch (action.type) {
         case 'CREATE_EMPLOYEE':
-            newState = [...state, action.payload]
+            newState = {
+                ...state,
+                [action.payload.id]: action.payload.newEmployee
+            }
             break;
         default: 
             newState = state;

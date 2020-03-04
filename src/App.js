@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch, Redirect, Link } from 'react-router-dom';
-import Employees from './Components/Employes';
+import Employees from './Components/Employees';
 import EmployeeDetail from './Components/EmployeeDetail.js';
 import Login from './Components/Login.js';
 import { connect } from 'react-redux';

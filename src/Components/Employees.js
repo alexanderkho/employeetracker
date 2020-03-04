@@ -27,7 +27,7 @@ const Employees = ({ employees }) => {
                 <Button color="primary" active={ selected === 0 } onClick={() => setSelected(0)}>Show All Employees</Button>
                 <Button color="primary" active={ selected === 1} onClick={() => setSelected(1)}>Show Active Empyloyees Only</Button>
             </ButtonGroup>
-            {activeEmployees.map(employee => <EmployeeOverview employee={employee} key={employee.ID} />)}
+            {Object.keys(activeEmployees).map(key => <EmployeeOverview employee={activeEmployees[key]} id={key} key={key} />)}
             <Button onClick={toggleModal}>Add A New Employee</Button>
             <AddEmployee showModal={showModal} toggleModal={toggleModal} />
         </div>

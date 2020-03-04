@@ -1,3 +1,5 @@
+import { v4 as uuid } from 'uuid';
+
 export function logIn () {
     return {
         type: 'LOG_IN'
@@ -5,11 +7,11 @@ export function logIn () {
 }
 
 export function createEmployee (newEmployee) {
-    newEmployee.ID = newEmployee.FirstName + newEmployee.MiddleInitial + newEmployee.LastName + (new Date()).getTime();
+    const id = uuid();
     newEmployee.Status = true;
     return {
         type: 'CREATE_EMPLOYEE',
-        payload: newEmployee
+        payload: { id, newEmployee }
     }
 }
 
