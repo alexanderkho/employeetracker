@@ -4,7 +4,6 @@ const employeesReducer = (state=employeeList, action) => {
     let newState;
     switch (action.type) {
         case 'CREATE_EMPLOYEE':
-            console.log(action.payload);
             newState = [...state, action.payload]
             break;
         default: 

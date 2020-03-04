@@ -5,7 +5,9 @@ const EmployeeOverview = ({ employee }) => {
     return (
         <div>
             <ul>
-                <li><b>{`${employee.FirstName} ${employee.MiddleInitial}. ${employee.LastName}`}</b></li>
+                <li><b>
+                    {`${employee.FirstName} ${employee.MiddleInitial}. ${employee.LastName} ${!employee.Status ? '(inactive)' : null}`}
+                </b></li>
                 <li>
                     {<Link to={{
                         pathname: `/employees/${employee.ID}`,
