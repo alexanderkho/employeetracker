@@ -1,19 +1,23 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, Redirect, Link } from 'react-router-dom';
 import Employees from './Components/Employes';
 import EmployeeDetail from './Components/EmployeeDetail.js';
+import Login from './Components/Login.js';
 import { connect } from 'react-redux';
 
-function App(props) {
-  console.log(props);
+function App({ employees, session }) {
   return (
     <div>
-      <h1>Employee Tracker</h1>
       <Router>
+        <Link to='/employees'>
+          <h1>Employee Tracker</h1>
+        </Link>
         <Switch>
-          <Route exact path='/employees' component={Employees}/>
+          <Route exact path='/' component={() => <Redirect to='/employees' />} />
+          <Route exact path='/employees' component={() => session.loggedIn ? <Employees employees={employees} /> : <Redirect to='/login' />}/>
           <Route exact path='/employees/:id' component={EmployeeDetail}/>
+          <Route exact path='/login' component={Login} />
         </Switch>
       </Router>
     </div>
@@ -21,6 +25,5 @@ function App(props) {
 }
 
 export default connect((state) => {
-  return {employees: state.employees}
+  return {employees: state.employees, session: state.session}
 })(App);
-

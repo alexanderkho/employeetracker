@@ -60,4 +60,3 @@ employeeList.forEach(employee => {
 });
 
 export { employeeList, session }
-

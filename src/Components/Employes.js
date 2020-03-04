@@ -1,13 +1,13 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import EmployeeOverview from './EmployeeOverview.js';
 
-const Employees = (props) => {
+const Employees = ({ employees }) => {
     return (
         <div>
             <h2>Here Are The Employees</h2>
-            <Link to='/employees/2'>Employee 2</Link>
+            {employees.map(employee => <EmployeeOverview employee={employee} key={employee.ID} />)}
         </div>
     )
 }
 
-export default withRouter(Employees);
+export default Employees;
