@@ -8,8 +8,8 @@ const EmployeeOverview = ({ employee }) => {
                 <li><b>{`${employee.FirstName} ${employee.MiddleInitial}. ${employee.LastName}`}</b></li>
                 <li>
                     {<Link to={{
-                    pathname: `/employees/${employee.ID}`,
-                    state: { employee: employee }  
+                        pathname: `/employees/${employee.ID}`,
+                        state: { employee: employee }  
                     }}>
                     More Info</Link>}
                 </li>

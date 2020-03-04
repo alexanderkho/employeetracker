@@ -1,8 +1,11 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter, Redirect } from 'react-router-dom';
 import moment from 'moment';
 
 const EmployeeDetail = ({ match, location }) => {
+    if (!location.state) {
+        return <Redirect to='/login'  />
+    }
     const { employee } = location.state;
     const { id } = match.params;
     return (

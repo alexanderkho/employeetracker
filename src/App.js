@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import {BrowserRouter as Router, Route, Switch, Redirect, Link } from 'react-router-dom';
 import Employees from './Components/Employes';
 import EmployeeDetail from './Components/EmployeeDetail.js';
@@ -18,6 +17,7 @@ function App({ employees, session }) {
           <Route exact path='/employees' component={() => session.loggedIn ? <Employees employees={employees} /> : <Redirect to='/login' />}/>
           <Route exact path='/employees/:id' component={EmployeeDetail}/>
           <Route exact path='/login' component={Login} />
+          <Route path='/' component={() => <b>404 Page Not Found</b>} />
         </Switch>
       </Router>
     </div>
