@@ -8,8 +8,6 @@ const Login = ({ history, dispatch }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(logIn());
-        console.log('yup')
-        console.log(history);
         history.push('/employees');
     }
 
