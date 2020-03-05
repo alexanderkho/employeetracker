@@ -8,5 +8,5 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(buildPath, 'index.html'));
 }); 
 const port = process.env.PORT || 1234;
-app.listen(1234);
+app.listen(port);
 console.log(`listening on port ${port}`);
