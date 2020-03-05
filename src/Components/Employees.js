@@ -2,8 +2,9 @@ import React from 'react';
 import EmployeeOverview from './EmployeeOverview.js';
 import ModifyEmployee from './ModifyEmployee.js';
 import { useState, useEffect }from 'react';
-import { Button, ButtonGroup } from 'reactstrap';
+import { Button, ButtonGroup, Table } from 'reactstrap';
 import { createEmployee } from '../Redux/actions.js';
+import ChangeLogin from './ChangeLogin.js'
 
 const Employees = ({ employees }) => {
 
@@ -28,13 +29,24 @@ const Employees = ({ employees }) => {
     
     return (
         <div>
-            <h2>Welcome!</h2>
+            <p className="subHeader">Welcome!</p>
             <ButtonGroup>
-                <Button color="primary" active={ selected === 0 } onClick={() => setSelected(0)}>Show All Employees</Button>
-                <Button color="primary" active={ selected === 1} onClick={() => setSelected(1)}>Show Active Empyloyees Only</Button>
+                <Button color="success" active={ selected === 0 } onClick={() => setSelected(0)}>Show All Employees</Button>
+                <Button color="success" active={ selected === 1} onClick={() => setSelected(1)}>Show Active Empyloyees Only</Button>
             </ButtonGroup>
-            {Object.keys(activeEmployees).map(key => <EmployeeOverview employee={activeEmployees[key]} id={key} key={key} />)}
-            <Button onClick={toggleModal}>Add A New Employee</Button>
+            <Table striped hover>
+                <thead>
+                    <tr>
+                        <th>Employee Name</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {Object.keys(activeEmployees).map(key => <EmployeeOverview employee={activeEmployees[key]} id={key} key={key} />)}
+                </tbody>
+            </Table>
+            <Button color="success" onClick={toggleModal}>Add A New Employee</Button>
+            <ChangeLogin color="warning" action="Log Out" className="logout" />
             <ModifyEmployee showModal={showModal} toggleModal={toggleModal} action={createEmployee} />
         </div>
     )

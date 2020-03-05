@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Button, ButtonGroup } from 'reactstrap';
+import { Button, ButtonGroup, Table } from 'reactstrap';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { deleteEmployee, updateEmployee, changeEmployeeStatus } from '../Redux/actions.js';
 import { Redirect } from 'react-router-dom';
 import ModifyEmployee from './ModifyEmployee.js';
+import ChangeLogin from './ChangeLogin.js';
 
 const EmployeeDetail = ({ match, employees, dispatch, history }) => {
     const [ showModal, setModal ] = useState(false);
@@ -35,22 +35,41 @@ const EmployeeDetail = ({ match, employees, dispatch, history }) => {
 
     return (
         <div>
-            <h2>Employee Details</h2>
-            <ul>
-                <li>Employee ID: {id}</li>
-                <li>Name: {`${employee.FirstName} ${employee.MiddleInitial}. ${employee.LastName}`}</li>
-                <li>DOB: {moment(employee.DateOfBirth).format('MMMM Do YYYY')}</li>
-                <li>Start of Employment: {moment(employee.DateOfEmployment).format('MMMM Do YYYY')}</li>
-                <li>Status: {employee.Status ? 'Active' : 'Inactive'}</li>
-            </ul>
-            <p>Actions:</p>
-            <ButtonGroup>
-                <Button onClick={handleDelete}>Delete Employee</Button>
-                <Button onClick={handleUpdate}>Update Employee</Button>
-                <Button onClick={handleChangeStatus}>{employee.Status ? 'Deactivate Employee' : 'Reactivate Employee'}</Button>
-            </ButtonGroup>
-            <br></br>
-            <Link to='/employees'>Back</Link>
+            <p className="subHeader">Employee Details</p>
+            <Table striped>
+                <tbody>
+                    <tr>
+                        <td>Employee ID</td> 
+                        <td>{id}</td>
+                    </tr>
+                    <tr>
+                        <td>Name</td> 
+                        <td>{`${employee.FirstName} ${employee.MiddleInitial}. ${employee.LastName}`}</td>
+                    </tr>
+                    <tr>
+                        <td>DOB</td> 
+                        <td>{moment(employee.DateOfBirth).format('MMMM Do YYYY')}</td>
+                    </tr>
+                    <tr>
+                        <td>Start of Employment</td> 
+                        <td>{moment(employee.DateOfEmployment).format('MMMM Do YYYY')}</td>
+                    </tr>
+                    <tr>
+                        <td>Status</td> 
+                        <td>{employee.Status ? 'Active' : 'Inactive'}</td>
+                    </tr>
+                </tbody>
+            </Table>
+                <div className="employeeActions">
+                    <p>Actions:</p>
+                    <ButtonGroup >
+                        <Button color="success" onClick={handleDelete}>Delete Employee</Button>
+                        <Button color="success" onClick={handleUpdate}>Update Employee</Button>
+                        <Button color="success" onClick={handleChangeStatus}>{employee.Status ? 'Deactivate Employee' : 'Reactivate Employee'}</Button>
+                    </ButtonGroup>
+                </div>
+                <Button color="warning"  onClick={() => history.push('/employees')} className="buttonNav">Back</Button>
+                <ChangeLogin color="warning" action="Log Out" className="logout buttonNav" />
             <ModifyEmployee 
                 employee={{ ...employee}} 
                 showModal={showModal} 

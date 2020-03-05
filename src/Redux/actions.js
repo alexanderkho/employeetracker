@@ -1,8 +1,8 @@
 import { v4 as uuid } from 'uuid';
 
-export function logIn () {
+export function changeLoginStatus () {
     return {
-        type: 'LOG_IN'
+        type: 'CHANGE_LOGIN_STATUS'
     }
 }
 
