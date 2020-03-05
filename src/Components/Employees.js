@@ -34,19 +34,23 @@ const Employees = ({ employees }) => {
                 <Button color="success" active={ selected === 0 } onClick={() => setSelected(0)}>Show All Employees</Button>
                 <Button color="success" active={ selected === 1} onClick={() => setSelected(1)}>Show Active Empyloyees Only</Button>
             </ButtonGroup>
-            <Table striped hover>
-                <thead>
-                    <tr>
-                        <th>Employee Name</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {Object.keys(activeEmployees).map(key => <EmployeeOverview employee={activeEmployees[key]} id={key} key={key} />)}
-                </tbody>
-            </Table>
+            {
+                Object.keys(activeEmployees).length ? 
+                <Table striped hover>
+                    <thead>
+                        <tr>
+                            <th>Employee Name</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {Object.keys(activeEmployees).map(key => <EmployeeOverview employee={activeEmployees[key]} id={key} key={key} />)}
+                    </tbody>
+                </Table>
+                : <p>No Employees Here...</p>
+            }
             <Button color="success" onClick={toggleModal}>Add A New Employee</Button>
-            <ChangeLogin color="warning" action="Log Out" className="logout" />
+            <ChangeLogin color="warning" action="Log Out" className="buttonSpaced" />
             <ModifyEmployee showModal={showModal} toggleModal={toggleModal} action={createEmployee} />
         </div>
     )

@@ -1,6 +1,8 @@
 .body {
   background-color:rgb(75, 127, 240);
   min-height: 100vh;
+  overflow: auto;
+  padding-bottom: 2rem;
 }
 
 h1, h2, p {
@@ -32,6 +34,14 @@ hr {
   margin-bottom: 0%;
 }
 
-.logout {
+.buttonSpaced {
   margin-left: 1rem;
+}
+
+.confirmDelete {
+  margin-top: 1rem;
+}
+
+.confirmDelete p {
+  color: black;
 }

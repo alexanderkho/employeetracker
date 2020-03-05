@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, ButtonGroup, Table } from 'reactstrap';
+import { Button, ButtonGroup, Table, Alert } from 'reactstrap';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { deleteEmployee, updateEmployee, changeEmployeeStatus } from '../Redux/actions.js';
@@ -9,6 +9,7 @@ import ChangeLogin from './ChangeLogin.js';
 
 const EmployeeDetail = ({ match, employees, dispatch, history }) => {
     const [ showModal, setModal ] = useState(false);
+    const [ showWarning, setWarning ] = useState(false);
 
     const { id } = match.params;
     const employee = employees[id];
@@ -63,13 +64,21 @@ const EmployeeDetail = ({ match, employees, dispatch, history }) => {
                 <div className="employeeActions">
                     <p>Actions:</p>
                     <ButtonGroup >
-                        <Button color="success" onClick={handleDelete}>Delete Employee</Button>
+                        <Button color="success" onClick={() => setWarning(true)}>Delete Employee</Button>
                         <Button color="success" onClick={handleUpdate}>Update Employee</Button>
                         <Button color="success" onClick={handleChangeStatus}>{employee.Status ? 'Deactivate Employee' : 'Reactivate Employee'}</Button>
                     </ButtonGroup>
+                    <div className="confirmDelete">
+                        <Alert isOpen={showWarning} color="danger">
+                            <p>Are you sure you want to delete this employee? This can not be undone</p>
+                            <hr></hr>
+                            <Button color="success" onClick={handleDelete}>Confirm</Button>
+                            <Button color="danger" className="buttonSpaced" onClick={() => setWarning(false)}>Cancel</Button>
+                        </Alert>
+                    </div>
                 </div>
                 <Button color="warning"  onClick={() => history.push('/employees')} className="buttonNav">Back</Button>
-                <ChangeLogin color="warning" action="Log Out" className="logout buttonNav" />
+                <ChangeLogin color="warning" action="Log Out" className="buttonSpaced buttonNav" />
             <ModifyEmployee 
                 employee={{ ...employee}} 
                 showModal={showModal} 
