@@ -2,7 +2,7 @@
 This is a simple application which allows users to view, add, update, de/re-activate and delete employees from an employee list.
 
 ## Technology Used
-This project was built upon the create-react-app boilerplate. Navigation was implemented with React Router and Redux was used for global state management. The Reactstrap UI Library was also used for component styling.
+This project is built upon the create-react-app boilerplate. Navigation is implemented with React Router, Redux is used for global state management, and the Reactstrap UI Library is used for component styling.
 
 ## Running The App
 To run this application locally, run:
