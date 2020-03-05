@@ -1,8 +1,9 @@
 import React from 'react';
 import EmployeeOverview from './EmployeeOverview.js';
-import AddEmployee from './AddEmployee.js';
+import ModifyEmployee from './ModifyEmployee.js';
 import { useState, useEffect }from 'react';
 import { Button, ButtonGroup } from 'reactstrap';
+import { createEmployee } from '../Redux/actions.js';
 
 const Employees = ({ employees }) => {
 
@@ -15,7 +16,12 @@ const Employees = ({ employees }) => {
         if (selected === 0) {
             setActiveEmployees(employees);
         } else {
-            const activeEmployees = employees.filter((employee) => employee.Status);
+            const activeEmployees = Object.keys(employees).reduce((acc, key) => (
+                employees[key].Status ? {
+                    ...acc,
+                    [key]: employees[key]
+                } : acc
+            ), {});
             setActiveEmployees(activeEmployees);
         }
     }, [selected, employees])
@@ -29,7 +35,7 @@ const Employees = ({ employees }) => {
             </ButtonGroup>
             {Object.keys(activeEmployees).map(key => <EmployeeOverview employee={activeEmployees[key]} id={key} key={key} />)}
             <Button onClick={toggleModal}>Add A New Employee</Button>
-            <AddEmployee showModal={showModal} toggleModal={toggleModal} />
+            <ModifyEmployee showModal={showModal} toggleModal={toggleModal} action={createEmployee} />
         </div>
     )
 }

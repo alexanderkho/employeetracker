@@ -1,14 +1,13 @@
 import React, { useReducer } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap';
-import { createEmployee } from '../Redux/actions.js';
 import { connect } from 'react-redux'
 
-const formVals = {
+const defaultFormVals = {
     FirstName: '',
     MiddleInitial: '',
     LastName: '',
     DateOfBirth: '',
-    DateOfEmployment: ''
+    DateOfEmployment: '',
 }
 
 const reducer = (state, { field, value }) => {
@@ -19,13 +18,14 @@ const reducer = (state, { field, value }) => {
 }
 
 //TODO: Implement Form Validation
-const AddEmployee = ({ toggleModal, showModal, dispatch }) => {
+const ModifyEmployee = ({ toggleModal, showModal, action, employee=defaultFormVals, id=null, dispatch }) => {
 
-    const [ state, dispatchToForm ] = useReducer(reducer, formVals);
+    const [ state, dispatchToForm ] = useReducer(reducer, employee);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(createEmployee(state))
+        dispatch(action(state, id));
+        toggleModal();
     }
 
     const handleChange = (e) => {
@@ -64,4 +64,4 @@ const AddEmployee = ({ toggleModal, showModal, dispatch }) => {
     )
 }
 
-export default connect(null)(AddEmployee);
+export default connect(null)(ModifyEmployee);

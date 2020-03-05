@@ -1,7 +1,6 @@
 import React from 'react';
 import { logIn } from '../Redux/actions.js';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
 const Login = ({ history, dispatch }) => {
 
@@ -18,4 +17,4 @@ const Login = ({ history, dispatch }) => {
     )
 }
 
-export default withRouter(connect(null)(Login));
+export default connect(null)(Login);

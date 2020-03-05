@@ -15,6 +15,23 @@ export function createEmployee (newEmployee) {
     }
 }
 
-export function updateEmployee (id, newInfo) {
-    return { id, newInfo };
+export function updateEmployee (newInfo, id) {
+    return {
+        type: 'UPDATE_EMPLOYEE',
+        payload: { id, newInfo }
+    }
+}
+
+export function deleteEmployee (id) {
+    return {
+        type: 'DELETE_EMPLOYEE',
+        payload: id
+    }
+}
+
+export function changeEmployeeStatus (id) {
+    return {
+        type: 'CHANGE_STATUS',
+        payload: id
+    }
 }
