@@ -1,11 +1,9 @@
-import { v4 as uuid } from 'uuid';
-
 const session = {
     loggedIn: false
 }
 
-const employeeList = [
-    {
+const employees = {
+    'cb3020e8-f436-4734-8e78-96d8a33baf7d': {
         FirstName: 'Alexander',
         MiddleInitial: 'K',
         LastName: 'Ho',
@@ -13,7 +11,7 @@ const employeeList = [
         DateOfEmployment: new Date('March 3 2020'),
         Status: true
     },
-    {
+    'bc3d935b-b3bb-40f8-8d8a-c01d8372fc7a': {
         FirstName: 'Rick',
         MiddleInitial: 'S',
         LastName: 'McGuire',
@@ -21,7 +19,7 @@ const employeeList = [
         DateOfEmployment: new Date('July 21 2018'),
         Status: true
     },
-    {
+    '25d78f8c-62b9-4ec9-bd73-6aff9d05a5ec': {
         FirstName: 'Michael',
         MiddleInitial: 'G',
         LastName: 'Scott',
@@ -29,7 +27,7 @@ const employeeList = [
         DateOfEmployment: new Date('November 1 2002'),
         Status: false
     },
-    {
+    '1cf24b5e-bbad-4f72-a104-3210da53d1b4': {
         FirstName: 'Isabelle',
         MiddleInitial: 'V',
         LastName: 'Jenkins',
@@ -37,12 +35,7 @@ const employeeList = [
         DateOfEmployment: new Date('November 17 2017'),
         Status: true
     }
-]
-
-//generate random uuid's and populate employees object with id/employee pairs
-const ids = [0, 1, 2, 3].map(() => uuid());
-const employees = {};
-ids.forEach((id, i) => employees[id] = employeeList[i]);
+}
 
 export { employees, session }
 

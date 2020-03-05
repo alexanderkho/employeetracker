@@ -13,6 +13,7 @@ const EmployeeDetail = ({ match, employees, dispatch, history }) => {
     const { id } = match.params;
     const employee = employees[id];
     
+    //handle edge case where a user tries to access an employee page that was created in another browser tab/session
     if (!employee) {
         return <Redirect to='/' />
     }
@@ -51,7 +52,7 @@ const EmployeeDetail = ({ match, employees, dispatch, history }) => {
             <br></br>
             <Link to='/employees'>Back</Link>
             <ModifyEmployee 
-                employee={employee} 
+                employee={{ ...employee}} 
                 showModal={showModal} 
                 toggleModal={toggleModal} 
                 action={updateEmployee}
