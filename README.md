@@ -8,7 +8,7 @@ This is a simple application which allows users to view, add, update, deactivte 
 * Reactstrap
 
 ## Running The App
-This application can be run locally via:
+This application can be run locally by first cloning this repo and then running:
 
 ```
 npm install
