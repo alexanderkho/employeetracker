@@ -3,7 +3,7 @@ import { Button, Table, Alert } from 'reactstrap';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { deleteEmployee, updateEmployee, changeEmployeeStatus } from '../Redux/actions.js';
-import { Redirect } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 import ModifyEmployee from './ModifyEmployee.js';
 import Logout from './Logout.js';
 
@@ -90,4 +90,4 @@ const EmployeeDetail = ({ match, employees, dispatch, history }) => {
     )
 }
 
-export default connect((state) => ({employees: state.employees}))(EmployeeDetail);
+export default withRouter(connect((state) => ({employees: state.employees}))(EmployeeDetail));
