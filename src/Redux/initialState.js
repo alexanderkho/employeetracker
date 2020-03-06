@@ -39,14 +39,3 @@ const employees = {
 }
 
 export { employees, session }
-
-/*
-    --Employee Schema Reference--
-    ID - Unique identifier for an employee 
-    FirstName - Employee first name 
-    MiddleInitial - Employee middle initial 
-    LastName - Employee last name 
-    DateOfBirth - Employee birthday and year 
-    DateOfEmployment - Employee start date 
-    Status - boolean for active or inactive
-*/

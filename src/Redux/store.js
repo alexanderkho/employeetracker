@@ -1,6 +1,4 @@
-import { createStore, applyMiddleware } from 'redux';
-import {logger} from 'redux-logger';
+import { createStore } from 'redux';
 import rootReducer from './rootReducer.js';
-const middleware = applyMiddleware(logger);
 const store = createStore(rootReducer, middleware);
 export default store;
