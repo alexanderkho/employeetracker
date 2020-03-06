@@ -9,6 +9,18 @@ const sessionReducer = (state=session, action) => {
                 loggedIn: !state.loggedIn
             }
             break;
+        case 'LOGIN':
+            newState = {
+                loggedIn: true,
+                user: action.payload
+            }
+            break;
+        case 'LOGOUT':
+            newState = {
+                loggedIn: false,
+                user: null
+            }
+            break;
         default: 
             newState = state;
     }

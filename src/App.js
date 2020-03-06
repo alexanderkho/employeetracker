@@ -2,11 +2,17 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Switch, Redirect, Link } from 'react-router-dom';
 import Employees from './Components/Employees';
 import EmployeeDetail from './Components/EmployeeDetail.js';
-import ChangeLogin from './Components/ChangeLogin.js';
+import Login from './Components/Login.js';
 import { connect } from 'react-redux';
 import { Container, Row, Col } from 'reactstrap';
 
 function App({ employees, session }) {
+
+  const renderEmployees = () => {
+    return session.loggedIn ? <Employees employees={employees} session={session} /> 
+      : <Redirect to='/login' />
+  }
+
   return (
     <div className="body">
       <Container>
@@ -19,9 +25,9 @@ function App({ employees, session }) {
               </Link>
               <Switch>
                 <Route exact path='/' component={() => <Redirect to='/employees' />} />
-                <Route exact path='/employees' component={() => session.loggedIn ? <Employees employees={employees} /> : <Redirect to='/login' />}/>
+                <Route exact path='/employees' component={renderEmployees}/>
                 <Route exact path='/employees/:id' component={EmployeeDetail}/>
-                <Route exact path='/login' component={() => <ChangeLogin color="success" action="Log in" />} />
+                <Route exact path='/login' component={Login} />
                 <Route path='/' component={() => <b>404 Page Not Found</b>} />
               </Switch>
             </Router>

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Button, ButtonGroup, Table, Alert } from 'reactstrap';
+import { Button, Table, Alert } from 'reactstrap';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { deleteEmployee, updateEmployee, changeEmployeeStatus } from '../Redux/actions.js';
 import { Redirect } from 'react-router-dom';
 import ModifyEmployee from './ModifyEmployee.js';
-import ChangeLogin from './ChangeLogin.js';
+import Logout from './Logout.js';
 
 const EmployeeDetail = ({ match, employees, dispatch, history }) => {
     const [ showModal, setModal ] = useState(false);
@@ -63,22 +63,22 @@ const EmployeeDetail = ({ match, employees, dispatch, history }) => {
             </Table>
                 <div className="employeeActions">
                     <p>Actions:</p>
-                    <ButtonGroup >
                         <Button color="success" onClick={() => setWarning(true)}>Delete Employee</Button>
-                        <Button color="success" onClick={handleUpdate}>Update Employee</Button>
-                        <Button color="success" onClick={handleChangeStatus}>{employee.Status ? 'Deactivate Employee' : 'Reactivate Employee'}</Button>
-                    </ButtonGroup>
-                    <div className="confirmDelete">
+                        <Button color="success" className="buttonMarginLeft" onClick={handleUpdate}>Update Employee</Button>
+                        <Button color="success" className="buttonMarginLeft" onClick={handleChangeStatus}>
+                            {employee.Status ? 'Deactivate Employee' : 'Reactivate Employee'}
+                        </Button>
+                    <div className="warningMessage">
                         <Alert isOpen={showWarning} color="danger">
                             <p>Are you sure you want to delete this employee? This can not be undone</p>
                             <hr></hr>
                             <Button color="success" onClick={handleDelete}>Confirm</Button>
-                            <Button color="danger" className="buttonSpaced" onClick={() => setWarning(false)}>Cancel</Button>
+                            <Button color="danger" className="buttonMarginLeft" onClick={() => setWarning(false)}>Cancel</Button>
                         </Alert>
                     </div>
                 </div>
-                <Button color="warning"  onClick={() => history.push('/employees')} className="buttonNav">Back</Button>
-                <ChangeLogin color="warning" action="Log Out" className="buttonSpaced buttonNav" />
+                <Button color="warning"  onClick={() => history.push('/employees')} >Back</Button>
+                <Logout/>
             <ModifyEmployee 
                 employee={{ ...employee}} 
                 showModal={showModal} 

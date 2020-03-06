@@ -4,9 +4,9 @@ import ModifyEmployee from './ModifyEmployee.js';
 import { useState, useEffect }from 'react';
 import { Button, ButtonGroup, Table } from 'reactstrap';
 import { createEmployee } from '../Redux/actions.js';
-import ChangeLogin from './ChangeLogin.js'
+import Logout from './Logout.js'
 
-const Employees = ({ employees }) => {
+const Employees = ({ employees, session }) => {
 
     const [ showModal, setModal ] = useState(false);
     const [ activeEmployees, setActiveEmployees ] = useState(employees);
@@ -29,7 +29,7 @@ const Employees = ({ employees }) => {
     
     return (
         <div>
-            <p className="subHeader">Welcome!</p>
+            <p className="subHeader">Welcome, {session.user}!</p>
             <ButtonGroup>
                 <Button color="success" active={ selected === 0 } onClick={() => setSelected(0)}>Show All Employees</Button>
                 <Button color="success" active={ selected === 1} onClick={() => setSelected(1)}>Show Active Empyloyees Only</Button>
@@ -50,7 +50,7 @@ const Employees = ({ employees }) => {
                 : <p>No Employees Here...</p>
             }
             <Button color="success" onClick={toggleModal}>Add A New Employee</Button>
-            <ChangeLogin color="warning" action="Log Out" className="buttonSpaced" />
+            <Logout />
             <ModifyEmployee showModal={showModal} toggleModal={toggleModal} action={createEmployee} />
         </div>
     )

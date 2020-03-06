@@ -2,7 +2,7 @@
   background-color:rgb(75, 127, 240);
   min-height: 100vh;
   overflow: auto;
-  padding-bottom: 2rem;
+  padding: 2rem 0 2rem 0;
 }
 
 h1, h2, p {
@@ -11,6 +11,7 @@ h1, h2, p {
 
 hr {
   background-color: white;
+  margin-top: 0rem !important;
 }
 
 .subHeader {
@@ -26,22 +27,22 @@ hr {
   display: none;
 }
 
-.buttonNav {
-  margin-top: 1rem;
-}
-
 .employeeActions p {
-  margin-bottom: 0%;
+  margin-bottom: 0.25rem;
 }
 
-.buttonSpaced {
+.buttonMarginLeft {
   margin-left: 1rem;
 }
 
-.confirmDelete {
+.buttonMarginTop {
+  margin-top: 0.25rem;
+}
+
+.warningMessage {
   margin-top: 1rem;
 }
 
-.confirmDelete p {
+.warningMessage p {
   color: black;
 }

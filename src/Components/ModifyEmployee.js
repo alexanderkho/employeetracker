@@ -96,17 +96,17 @@ class ModifyEmployee extends Component {
                     <Form onSubmit={this.handleSubmit}>
                         <FormGroup>
                             <Label>First Name</Label>
-                            <Input type="text" id="FirstName" placeholder="e.g. Duck" value={formVals.FirstName} onChange={this.handleChange}></Input>
+                            <Input type="text" id="FirstName" placeholder="e.g. Dwight" value={formVals.FirstName} onChange={this.handleChange}></Input>
                             <p className={`text-danger ${this.state.warningStatus.FirstName ? '' : 'hidden'}`}>Required</p>
                         </FormGroup>
                         <FormGroup>
                             <Label>Middle Initial</Label>
-                            <Input type="text" id="MiddleInitial" placeholder="e.g. F" value={formVals.MiddleInitial} onChange={this.handleChange}></Input>
+                            <Input type="text" id="MiddleInitial" placeholder="e.g. K" value={formVals.MiddleInitial} onChange={this.handleChange}></Input>
                             <p className={`text-danger ${this.state.warningStatus.MiddleInitial ? '' : 'hidden'}`}>Invalid Initial</p>
                         </FormGroup>
                         <FormGroup>
                             <Label>Last Name</Label>
-                            <Input type="text" id="LastName" placeholder="e.g. Johnson" value={formVals.LastName} onChange={this.handleChange}></Input>
+                            <Input type="text" id="LastName" placeholder="e.g. Schrute" value={formVals.LastName} onChange={this.handleChange}></Input>
                             <p className={`text-danger ${this.state.warningStatus.LastName ? '' : 'hidden'}`}>Required</p>
                         </FormGroup>
                         <FormGroup>

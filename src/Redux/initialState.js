@@ -1,5 +1,6 @@
 const session = {
-    loggedIn: false
+    loggedIn: false,
+    user: null
 }
 
 const employees = {
