@@ -8,11 +8,7 @@ const EmployeeOverview = ({ employee, id }) => {
                 {`${employee.FirstName} ${employee.MiddleInitial}. ${employee.LastName} ${!employee.Status ? '(inactive)' : ''}`}
             </b></td>
             <td>
-                {<Link to={{
-                    pathname: `/employees/${id}`,
-                    state: { employee }  
-                }}>
-                More Info</Link>}
+                <Link to={`/employees/${id}`}>More Info</Link>
             </td>
         </tr>
     )
