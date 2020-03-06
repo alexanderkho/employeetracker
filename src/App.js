@@ -8,8 +8,8 @@ import { Container, Row, Col } from 'reactstrap';
 
 function App({ employees, session }) {
 
-  const renderEmployees = () => {
-    return session.loggedIn ? <Employees employees={employees} session={session} /> 
+  const renderAuthRoute = (component) => {
+    return session.loggedIn ? component 
       : <Redirect to='/login' />
   }
 
@@ -25,8 +25,8 @@ function App({ employees, session }) {
               </Link>
               <Switch>
                 <Route exact path='/' component={() => <Redirect to='/employees' />} />
-                <Route exact path='/employees' component={renderEmployees}/>
-                <Route exact path='/employees/:id' component={EmployeeDetail}/>
+                <Route exact path='/employees' component={() => renderAuthRoute(<Employees employees={employees} session={session} />)}/>
+                <Route exact path='/employees/:id' component={() => renderAuthRoute(<EmployeeDetail />)}/>
                 <Route exact path='/login' component={Login} />
                 <Route path='/' component={() => <b>404 Page Not Found</b>} />
               </Switch>

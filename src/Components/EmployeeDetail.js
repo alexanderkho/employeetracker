@@ -3,7 +3,7 @@ import { Button, Table, Alert } from 'reactstrap';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { deleteEmployee, updateEmployee, changeEmployeeStatus } from '../Redux/actions.js';
-import { Redirect, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import ModifyEmployee from './ModifyEmployee.js';
 import Logout from './Logout.js';
 
@@ -13,11 +13,6 @@ const EmployeeDetail = ({ match, employees, dispatch, history }) => {
 
     const { id } = match.params;
     const employee = employees[id];
-    
-    //handle edge case where a user tries to access an employee page that was created in another browser tab/session
-    if (!employee) {
-        return <Redirect to='/' />
-    }
     
     const toggleModal = () => setModal(!showModal);
     
